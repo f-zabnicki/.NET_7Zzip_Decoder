@@ -1,4 +1,7 @@
-﻿using System;
+﻿using SharpCompress.Archives;
+using SharpCompress.Common;
+using System;
+using System.Linq;
 
 namespace _7ZipDecoder
 {
@@ -6,7 +9,9 @@ namespace _7ZipDecoder
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Decrypter fileDecrypter = new Decrypter();
+            //path variable => easy implementation of user input file path
+            fileDecrypter.TryBruteForceFile();
         }
     }
 }

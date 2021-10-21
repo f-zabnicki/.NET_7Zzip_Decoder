@@ -6,4 +6,8 @@
     <RootNamespace>_7ZipDecoder</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="SharpCompress" Version="0.30.0" />
+  </ItemGroup>
+
 </Project>
