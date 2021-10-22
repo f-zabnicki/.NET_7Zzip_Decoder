@@ -2,6 +2,7 @@
 using SharpCompress.Common;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,6 +22,7 @@ namespace _7ZipDecoder
         };
         private static int passwordLenght = 0;
         private static bool opened = false;
+        private static int counter = 0;
 
         public void TryBruteForceFile()
         {
@@ -29,6 +31,13 @@ namespace _7ZipDecoder
                 passwordLenght++;
                 BruteForce(passwordLenght);
             }
+        }
+        [Conditional("RELEASE")]
+        private void ShowCounter()
+        {
+            counter++;
+            Console.Clear();
+            Console.WriteLine($"Tried: {counter} times");
         }
 
         private void BruteForce(int passwordLenght)
@@ -59,6 +68,7 @@ namespace _7ZipDecoder
                 else if (opened) { return; }
                 else
                 {
+                    ShowCounter();
                     var output = new String(chars);
                     if (SevenZipOperator.DecryptFile(output))
                     {

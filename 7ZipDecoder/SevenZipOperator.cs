@@ -2,6 +2,7 @@
 using SharpCompress.Common;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,17 +33,22 @@ namespace _7ZipDecoder
             }
             catch (InvalidFormatException ex)
             {
-                Console.WriteLine("Something wrong: " + password);
+                ShowMessage("Something wrong", password);
             }
             catch (PasswordProtectedException ex)
             {
-                Console.WriteLine("Password wrong: " + password);
+                ShowMessage("Password wrong", password);
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Password wrong: " + password);
+                ShowMessage("Password wrong", password);
             }
             return false;
+        }
+        [Conditional("DEBUG")]
+        private static void ShowMessage(string message, string password)
+        {
+            Console.WriteLine($"{message}: {password}");
         }
     }
 }
