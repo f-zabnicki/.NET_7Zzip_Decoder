@@ -12,6 +12,7 @@ namespace _7ZipDecoder
             Decrypter fileDecrypter = new Decrypter();
             //path variable => easy implementation of user input file path
             fileDecrypter.TryBruteForceFile();
+            Console.ReadLine();
         }
     }
 }

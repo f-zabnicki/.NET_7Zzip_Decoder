@@ -11,6 +11,7 @@ namespace _7ZipDecoder
 {
     class Decrypter
     {
+        private string password = "Tir";
         private static char[] charsOfPassword =
         {
         'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j',
@@ -26,11 +27,15 @@ namespace _7ZipDecoder
 
         public void TryBruteForceFile()
         {
+            Stopwatch watch = new Stopwatch();
+            watch.Start();
             while (!opened)
             {
                 passwordLenght++;
                 BruteForce(passwordLenght);
             }
+            watch.Stop();
+            Console.WriteLine(watch.Elapsed);
         }
         [Conditional("RELEASE")]
         private void ShowCounter()
